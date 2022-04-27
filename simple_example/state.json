@@ -1,0 +1,16 @@
+{
+  "Comment": "Basic example",
+  "StartAt": "first",
+  "States": {
+    "first": {
+      "Type": "Pass",
+      "Result": "first_hello",
+      "Next": "second"
+    },
+    "second": {
+      "Type": "Pass",
+      "Result": "second_hello",
+      "End": true
+    }
+  }
+}

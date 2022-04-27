@@ -1,0 +1,30 @@
+{
+  "Comment": "lambda input example",
+  "StartAt": "process_path",
+  "States": {
+    "process_path": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:Add",
+      "InputPath": "$.path",
+      "ResultPath": "$.mbu",
+      "Next": "run_crawler"
+    },
+    "run_crawler": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "A": {
+            "Variable": "$.mbu",
+            "StringEquals": "A"
+          },
+          "Next": "run_a"
+        }
+      ]
+    },
+    "run_a": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:Add",
+      "End": true
+    }
+  }
+}
